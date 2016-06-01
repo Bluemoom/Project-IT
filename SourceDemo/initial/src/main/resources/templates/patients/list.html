@@ -1,0 +1,36 @@
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment ="content">
+<a class="btn btn-primary" href="/patients/new">Add new Patient</a>
+<table class="table table-striped" id="patients_list">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="patient : ${patients}">
+            <td class="name" data-th-text="${patient.name}"></td>
+
+            <td>
+                <a th:href="@{'/patients/{id}/delete'(id=${patient.id})}" class="delete" th:attr="name=${patient.name}">
+                        <span class="fa-stack">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </span>
+                </a>
+            </td>
+
+            <td>
+                <a th:href="@{'/patients/{id}/edit'(id=${patient.id})}" class="edit" th:attr="name=${patient.name}">
+                    <span class="fa-stack">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </span>
+
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>
