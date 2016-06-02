@@ -17,7 +17,7 @@
             <td class="status" th:text="${doctor.status}"></td>
 
             <td>
-                <a th:href="@{'/patients/{id}/delete'(id=${doctor.id})}" class="delete" th:attr="name=${doctor.username}">
+                <a th:href="@{'/doctors/{id}/delete'(id=${doctor.id})}" class="delete" th:attr="name=${doctor.username}">
                         <span class="fa-stack">
                             <i class="glyphicon glyphicon-trash"></i>
                         </span>
@@ -25,7 +25,7 @@
             </td>
 
             <td>
-                <a th:href="@{'/patients/{id}/edit'(id=${doctor.id})}" class="edit" th:attr="name=${doctor.username}">
+                <a th:href="@{'/doctors/{id}/edit'(id=${doctor.id})}" class="edit" th:attr="name=${doctor.username}">
                     <span class="fa-stack">
                         <i class="glyphicon glyphicon-edit"></i>
                     </span>
