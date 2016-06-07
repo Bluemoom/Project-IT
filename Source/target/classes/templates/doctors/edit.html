@@ -1,0 +1,16 @@
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
+        <form method="post" name="doctor_form" id="doctor_form" action="/doctors/update" role="form">
+            <div class="form-group">
+                <label for="username">UserName</label>
+                <textarea rows="1" class="form-control" id="username" name="username" th:text="${doctor.username}"></textarea>
+                <label for="password">Password</label>
+                <textarea rows="1" class="form-control" id="password" name="password" th:text="${doctor.password}"></textarea>
+                <label for="status">Status</label>
+                <textarea rows="1" class="form-control" id="status" name="status" th:text="${doctor.status}"></textarea>
+            </div>
+            <input type="hidden" id="doctor_id" class="form-control" name="doctor_id" th:value="${doctor.id}"/>
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>

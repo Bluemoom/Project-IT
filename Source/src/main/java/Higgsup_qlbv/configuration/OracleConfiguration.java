@@ -25,9 +25,7 @@ public class OracleConfiguration {
         this.username = username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) { this.password = password; }
 
     public void setUrl(String url) {
         this.url = url;
@@ -43,5 +41,4 @@ public class OracleConfiguration {
         dataSource.setFastConnectionFailoverEnabled(true);
         return dataSource;
     }
-
 }
