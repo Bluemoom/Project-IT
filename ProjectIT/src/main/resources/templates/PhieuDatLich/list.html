@@ -1,0 +1,47 @@
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment ="content">
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Mã đặt lịch</th>
+                <th>Ngày khám</th>
+                <th>Buổi khám</th>
+                <th>Thời gian khám</th>
+                <th>Phòng khám</th>
+                <th>Bác sĩ khám</th>
+                <th>Tùy chọn</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lichKham : ${listLichKham}">
+                <td class="MaDatLich" th:text="${lichKham.lichKhamId}"></td>
+                <td class="PhongKhamId" th:text="${#dates.format(lichKham.ngayKham, 'dd-MMM-yyyy')}"></td>
+                <td class="ThoiGianBatDau" th:text="${lichKham.buoiKham}? 'Chiều' : 'Sáng'"></td>
+                <td class="ThoiGianKetThuc" th:text="${#dates.format(lichKham.thoiGianKham, 'HH:mm')}"></td>
+                <td class="ChiPhi" th:text="${lichKham.phongKham}"></td>
+                <td class="PhiDatLich" th:text="${lichKham.bacSiKham}"></td>
+                <td>
+                    <a th:href="@{'/PhieuDatLich/Huy/{id}'(id=${lichKham.lichKhamId})}" class="delete" th:attr="name=${lichKham.lichKhamId}">
+                        Hủy lịch <span class="fa-stack">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </span>
+                    </a>
+                    <a th:href="@{'/PhieuDatLich/{id}/edit'(id=${lichKham.lichKhamId})}" class="edit" th:attr="name=${lichKham.lichKhamId}">
+                        Xem chi tiết <span class="fa-stack">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </span>
+                    </a>
+                    <a th:href="@{'/PhieuDatLich/{id}/edit'(id=${lichKham.lichKhamId})}" class="edit" th:attr="name=${lichKham.lichKhamId}">
+                        Kết luận <span class="fa-stack">
+                  <i class="glyphicon glyphicon-edit"></i>
+                </span>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>

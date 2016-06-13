@@ -1,6 +1,7 @@
 package ProjectIT_DKKhamBenhTrucTuyen.data;
 
 import oracle.sql.TIMESTAMP;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class PhieuDatLich {
     private long benhNhanId;
     @Column(name = "THOIGIANBATDAU")
     @Temporal(TemporalType.TIMESTAMP)
+//    @DateTimeFormat(pattern = "HH:mm:ss")
     private Date thoiGianBatDau;
     @Column(name = "THOIGIANKETTHUC")
     @Temporal(TemporalType.TIMESTAMP)

@@ -5,6 +5,8 @@ import ProjectIT_DKKhamBenhTrucTuyen.repository.PhieuDatLichRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PhieuDatLichServiceImpl implements PhieuDatLichService {
     @Autowired
@@ -18,10 +20,6 @@ public class PhieuDatLichServiceImpl implements PhieuDatLichService {
         return phieuDatLichRepository.findAll();
     }
 
-    @Override
-    public Iterable<PhieuDatLich> getAllPhieuDatLichByBenhNhanId() {
-        return null;
-    }
 
     @Override
     public PhieuDatLich getPhieuDatLichById(Long id) {
@@ -37,4 +35,20 @@ public class PhieuDatLichServiceImpl implements PhieuDatLichService {
     public void deletePhieuDatLich(Long id) {
         phieuDatLichRepository.delete(id);
     }
+
+    @Override
+    public Iterable<PhieuDatLich> findPhieuDatLichByBenhNhanId(Long benhNhanId) {
+        return phieuDatLichRepository.findPhieuDatLichByBenhNhanId(benhNhanId);
+    }
+
+    @Override
+    public Iterable<Object[]> findLichKhamByBenhNhanId(Long benhNhanId) {
+        return phieuDatLichRepository.findLichKhamByBenhNhanId(benhNhanId);
+    }
+
+    @Override
+    public int capNhatTrangThaiPhieuDatLich(Long phieuPhieuDatLichId, Integer trangThai) {
+        return phieuDatLichRepository.capNhatTrangThaiPhieuDatLich(phieuPhieuDatLichId,trangThai);
+    }
+
 }

@@ -1,6 +1,7 @@
 package ProjectIT_DKKhamBenhTrucTuyen.data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="PHONGKHAM")
@@ -74,4 +75,5 @@ public class PhongKham {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
 }

@@ -22,6 +22,7 @@ public class ThuNgan {
     @Column(name="DIACHI")
     private String diaChi;
 
+
     public ThuNgan() {
     }
 

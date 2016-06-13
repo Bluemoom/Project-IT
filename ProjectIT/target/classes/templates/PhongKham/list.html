@@ -1,0 +1,41 @@
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment ="content">
+    <a class="btn btn-primary" href="/doctors/new">Add new Doctor</a>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Mã phòng khám</th>
+                <th>Tên phòng khám</th>
+                <th>Địa điểm</th>
+                <th>Tùy chọn</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="phongKham : ${listPhongKham}">
+                <td class="MaPhongKham" th:text="${phongKham.phongKhamId}"></td>
+                <td class="TenPhongKham" th:text="${phongKham.tenPhongKham}"></td>
+                <td class="TenDichVu" th:text="${phongKham.diaDiem}"></td>
+                <td>
+                    <a th:href="@{'/PhieuDatLich/{id}/delete'(id=${phongKham.phongKhamId})}" class="delete" th:attr="name=${phongKham.phongKhamId}">
+                        Hủy bỏ lịch <span class="fa-stack">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </span>
+                    </a>
+                    <a th:href="@{'/PhieuDatLich/{id}/edit'(id=${phongKham.phongKhamId})}" class="edit" th:attr="name=${phongKham.phongKhamId}">
+                        Chi tiết <span class="fa-stack">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </span>
+                    </a>
+                    <a th:href="@{'/PhieuDatLich/{id}/edit'(id=${phongKham.phongKhamId})}" class="edit" th:attr="name=${phongKham.phongKhamId}">
+                        Kết luận <span class="fa-stack">
+                  <i class="glyphicon glyphicon-edit"></i>
+                </span>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>
