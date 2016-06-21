@@ -1,0 +1,78 @@
+package model;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "LICHBIEU")
+public class LichBieu {
+	@Id
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="LICHBIEU_ID")
+	private int lichBieu_Id;
+	@Column(name = "PHONGKHAM_ID")
+	private String phongKham_Id;
+	@Column(name = "BACSI_ID")
+	private int bacSi_Id;
+	@Column(name = "NGAYLAM")
+	private Date ngayLam;
+	@Column(name="BUOILAM")
+	private int buoiLam;
+	@Column(name="TRANGTHAI")
+	private int trangThai;
+	public LichBieu() {
+	}
+	public LichBieu(int lichBieu_Id, String phongKham_Id, int bacSi_Id,
+			Date ngayLam, int buoiLam, int trangThai) {
+		this.lichBieu_Id = lichBieu_Id;
+		this.phongKham_Id = phongKham_Id;
+		this.bacSi_Id = bacSi_Id;
+		this.ngayLam = ngayLam;
+		this.buoiLam = buoiLam;
+		this.trangThai = trangThai;
+	}
+	public int getLichBieu_Id() {
+		return lichBieu_Id;
+	}
+	public void setLichBieu_Id(int lichBieu_Id) {
+		this.lichBieu_Id = lichBieu_Id;
+	}
+	public String getPhongKham_Id() {
+		return phongKham_Id;
+	}
+	public void setPhongKham_Id(String phongKham_Id) {
+		this.phongKham_Id = phongKham_Id;
+	}
+	public int getBacSi_Id() {
+		return bacSi_Id;
+	}
+	public void setBacSi_Id(int bacSi_Id) {
+		this.bacSi_Id = bacSi_Id;
+	}
+	public Date getNgayLam() {
+		return ngayLam;
+	}
+	public void setNgayLam(Date ngayLam) {
+		this.ngayLam = ngayLam;
+	}
+	public int getBuoiLam() {
+		return buoiLam;
+	}
+	public void setBuoiLam(int buoiLam) {
+		this.buoiLam = buoiLam;
+	}
+	public int getTrangThai() {
+		return trangThai;
+	}
+	public void setTrangThai(int trangThai) {
+		this.trangThai = trangThai;
+	}
+	
+	
+}
