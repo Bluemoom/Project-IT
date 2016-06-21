@@ -1,0 +1,46 @@
+package dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import model.BacSi;
+import model.PhongKham;
+import util.HibernateUtil;
+
+public class PhongKhamDAOImpl implements PhongKhamDAO {
+	
+	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	Session session = sessionFactory.getCurrentSession();
+
+	@Override
+	public List<PhongKham> findPhongKhamByDichVuIdAndNgayKhamAndBuoiKham(Long dichVuId, Date ngayKham, int buoiKham) {
+		List<PhongKham> results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT DISTINCT b FROM BacSi b, LichBieu l, PhongKham p WHERE b.bacSi_Id = l.bacSi_Id AND l.phongKham_Id = p.phongKham_Id AND p.dichVu_Id = :dichVuId AND l.ngayLam = :ngayLam AND l.buoiLam = :buoiLam";
+			Query query = session.createQuery(hql);
+			query.setParameter("dichVuId", dichVuId);
+			query.setParameter("ngayLam", ngayKham);
+			query.setParameter("buoiLam", buoiKham);
+			results = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+	          // Rollback trong trường hợp có lỗi xẩy ra.
+	          session.getTransaction().rollback();
+		} 
+		return results;
+	}
+
+	@Override
+	public List<PhongKham> findPhongKhamByLichBieu(Date ngayKham, int buoiKham, Long bacSiId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,10 @@
+package dao;
+
+import model.*;
+
+public interface PhongKhamDAO {
+	Iterable<PhongKham> findPhongKhamByDichVuIdAndNgayKhamAndBuoiKham(Long dichVuId, Date ngayKham, int buoiKham);
+
+    Iterable<PhongKham> findPhongKhamByLichBieu(Date ngayKham, int buoiKham, Long bacSiId);
+
+}

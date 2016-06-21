@@ -1,0 +1,16 @@
+package dao;
+
+import java.util.List;
+
+import model.BacSi;
+
+public interface BacSiDAO {
+	//Thêm 1 BacSi
+	public void themBacSi(BacSi bacSi);
+	
+	//Hiển thị Toàn bộ danh sách BacSi
+	public List<BacSi> listAllBacSi();
+	
+	//Hiển thị danh sách BacSi theo mã phòng
+	public List<BacSi> listBacSiByPhongKhamID(String phongKham_Id);
+}

@@ -1,0 +1,115 @@
+package dao;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
+import model.BacSi;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import util.HibernateUtil;
+
+public class BacSiDAOImpl implements BacSiDAO {
+	
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	Session session1 = sessionFactory.getCurrentSession();
+
+	@Override
+	public void themBacSi(BacSi bacSi) {
+		Session session=sessionFactory.openSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.save(bacSi);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public List<BacSi> listAllBacSi() {
+		Session session=sessionFactory.openSession();
+		Transaction tx=null;
+		List<BacSi> results=null;
+		
+		try{
+			tx=session.beginTransaction();
+			
+			String hql = "FROM BacSi";
+			Query query = session.createQuery(hql);
+			results = query.list();
+			
+			tx.commit();
+			
+		}catch(Exception e)
+		{
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return results;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<BacSi> listBacSiByPhongKhamID(String phongKham_Id) {
+		Session session=sessionFactory.openSession();
+		Transaction tx=null;
+		List<BacSi> results=null;
+		
+		try {
+			tx=session.beginTransaction();
+			String hql = "SELECT distinct bacSi FROM BacSi bacSi, LichBieu lichBieu WHERE bacSi.bacSi_Id = lichBieu.bacSi_Id AND lichBieu.phongKham_Id = :phongKham_Id";
+			Query query = session.createQuery(hql);
+			query.setParameter("phongKham_Id",phongKham_Id);
+			results = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return results;
+	}
+
+	@Override
+	public List<BacSi> findBacSiByDichVuIdAndNgayKhamAndBuoiKham(Long dichVuId, Date ngayKham, int buoiKham) {
+		try {
+			session1.getTransaction().begin();
+			String hql = "SELECT DISTINCT b FROM BacSi b, LichBieu l, PhongKham p WHERE b.bacSiId = l.bacSiId AND l.phongKhamId = p.phongKhamId AND p.dichVuId = :dichVuId AND l.ngayLam = :ngayLam AND l.buoiLam = :buoiLam";
+			Query query = session1.createQuery(hql);
+		} catch (Exception e) {
+			// TODO: handle exception
+		} 
+		
+		
+		Transaction tx = null;
+		return null;
+	}
+
+	@Override
+	public Iterable<BacSi> findBacSiByLichBieu(Date ngayKham, int buoiKham, Long phongKhamId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

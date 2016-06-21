@@ -1,0 +1,29 @@
+package test;
+
+import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import dao.BacSiDAOImpl;
+import model.BacSi;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		BacSiDAOImpl bacSiDAOImpl=new BacSiDAOImpl();
+		
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+		String ngayLam = "01-06-2016";
+        Date ngayKhamAfter = df.parse(ngayLam); 
+		List<BacSi> lst = (List<BacSi>) bacSiDAOImpl.listBacSiByPhongKhamID("NTH01");
+		 
+		for(BacSi bs : lst)
+		{
+			System.out.println(bs.getHoTen());
+		}		
+		
+		
+		
+
+	}
+
+}

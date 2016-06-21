@@ -1,0 +1,25 @@
+package test;
+
+import java.util.ArrayList;
+
+import java.util.*;
+import dao.BacSiDAOImpl;
+import model.BacSi;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		BacSiDAOImpl bacSiDAOImpl=new BacSiDAOImpl();
+		 
+		 List<BacSi> lst = (List<BacSi>) bacSiDAOImpl.listBacSiByPhongKhamID("NTH01");
+		for(BacSi bs : lst)
+		{
+			System.out.println(bs.getHoTen());
+		}		
+		
+		
+		
+
+	}
+
+}

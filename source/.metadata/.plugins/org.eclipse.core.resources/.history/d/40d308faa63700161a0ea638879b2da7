@@ -1,0 +1,30 @@
+package dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import model.PhongKham;
+import util.HibernateUtil;
+
+public class PhongKhamDAOImpl implements PhongKhamDAO {
+	
+	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	Session session = sessionFactory.getCurrentSession();
+
+	@Override
+	public List<PhongKham> findPhongKhamByDichVuIdAndNgayKhamAndBuoiKham(Long dichVuId, Date ngayKham, int buoiKham) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PhongKham> findPhongKhamByLichBieu(Date ngayKham, int buoiKham, Long bacSiId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

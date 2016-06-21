@@ -1,0 +1,28 @@
+package dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import model.DichVu;
+import util.HibernateUtil;
+
+public class DichVuDAOImpl implements DichVuDAO {
+
+SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	Session session = sessionFactory.getCurrentSession();
+	@Override
+	public List<DichVu> getAllDichVu() {
+		List<DichVu> results = null;
+		try {
+			session.getTransaction().begin();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return results;
+	}
+
+}

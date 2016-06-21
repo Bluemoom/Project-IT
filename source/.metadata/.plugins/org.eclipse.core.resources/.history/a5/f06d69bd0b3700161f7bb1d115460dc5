@@ -1,0 +1,21 @@
+package test;
+
+import dao.BacSiDAOImpl;
+import model.BacSi;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		BacSiDAOImpl bacSiDAOImpl=new BacSiDAOImpl();
+//		for(BacSi bs: bacSiDAOImpl.listBacSiByPhongKhamID("NTH01"))
+//		{
+//			System.out.println(bs.getHoTen());
+//		}
+		System.out.println(bacSiDAOImpl.listBacSiByPhongKhamID("NTH01").size());
+		
+		
+		
+
+	}
+
+}

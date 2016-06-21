@@ -1,0 +1,15 @@
+package test;
+
+import dao.BacSiDAOImpl;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		BacSiDAOImpl bs=new BacSiDAOImpl();
+		System.out.println(bs.listBacSiByPhongKhamID("NTH01").size());
+		
+		
+
+	}
+
+}

@@ -1,0 +1,93 @@
+package dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.management.Query;
+
+import model.BacSi;
+
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import util.HibernateUtil;
+
+public class BacSiDAOImpl implements BacSiDAO {
+	
+	private final SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
+
+	@Override
+	public void themBacSi(BacSi bacSi) {
+		Session session=sessionFactory.openSession();
+		Transaction tx=null;
+		
+		try {
+			tx=session.beginTransaction();
+			session.save(bacSi);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public List<BacSi> listAllBacSi() {
+		Session session=sessionFactory.openSession();
+		Transaction tx=null;
+		List<BacSi> results=null;
+		
+		try{
+			tx=session.beginTransaction();
+//			String sql = "SELECT * FROM BACSI";
+//			SQLQuery query = session.createSQLQuery(sql);
+//			query.addEntity(BacSi.class);
+//			results = query.list();
+			
+			String hql = "FROM QLDatLichKham.model.BacSi";
+			SQLQuery query = session.createSQLQuery(hql);
+			results = query.list();
+
+			tx.commit();
+		}catch(Exception e)
+		{
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return results;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<BacSi> listBacSiByPhongKhamID(String phongKham_Id) {
+		Session session=sessionFactory.openSession();
+		Transaction tx=null;
+		List<BacSi> list=null;
+		
+		try {
+			tx=session.beginTransaction();
+			list=(List<BacSi>)session.createSQLQuery("SELECT b FROM BacSi b, LichBieu lb WHERE b.bacSi_Id = lb.bacSi_Id and lb.phongKham_Id = '"+phongKham_Id+"'").list();
+			
+			tx.commit();
+		} catch (Exception e) {
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return list;
+	}
+
+}

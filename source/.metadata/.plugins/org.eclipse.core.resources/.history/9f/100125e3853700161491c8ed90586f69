@@ -1,0 +1,51 @@
+package controler;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dao.BacSiDAOImpl;
+import model.*;
+
+@WebServlet("/BacSiRest")
+public class BacSiRest extends HttpServlet {	
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BacSiDAOImpl bacSiDAOImpl = new BacSiDAOImpl();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		
+		List<BacSi> results = null;
+		
+		String command = request.getParameter("command");
+		String ngayKham = request.getParameter("ngayKham");
+		String buoiKham = request.getParameter("buoiKham");
+		
+		 switch(command) {
+		 case "findBacSiByDichVuIdAndNgayKhamAndBuoiKham":
+		 String dichVuId = request.getParameter("dichVuId");
+		 results = bacSiDAOImpl.findBacSiByDichVuIdAndNgayKhamAndBuoiKham(dichVuId, ngayKham, buoiKham);
+		 break;
+		 case "findBacSiByLichBieu":
+		 String phongKhamId = request.getParameter("phongKhamId");	 
+		 break;
+		 
+		}
+
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+	
+
+
+}

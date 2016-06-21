@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/connection/ConnectionUtil.java=UTF-8
+encoding//src/connection/OracleConnUtil.java=UTF-8
+encoding//src/dao/BacSiDAO.java=UTF-8
+encoding//src/dao/BacSiDAOImpl.java=UTF-8
+encoding//src/util/HibernateUtil.java=UTF-8

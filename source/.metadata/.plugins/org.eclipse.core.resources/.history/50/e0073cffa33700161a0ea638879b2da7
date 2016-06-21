@@ -1,0 +1,80 @@
+package controler;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import com.google.gson.Gson;
+
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dao.*;
+import model.*;
+
+@WebServlet("/BacSiRest")
+public class BacSiRest extends HttpServlet {
+
+	static BacSiDAOImpl bacSiDAOImpl = new BacSiDAOImpl();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {	
+
+		List<BacSi> results = null;
+////		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+////		String ngayLam = "01-06-2016";
+////        Date ngayKhamAfter=null;
+////		try {
+////			ngayKhamAfter = df.parse(ngayLam);
+////		} catch (ParseException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		} 
+////		List<BacSi> lst = (List<BacSi>) bacSiDAOImpl.findBacSiByDichVuIdAndNgayKhamAndBuoiKham("DV001", ngayKhamAfter, 0);
+//
+////		String command = request.getParameter("command");
+////		String ngayKham = request.getParameter("ngayKham");
+////		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+////		String dichVuId = request.getParameter("dichVuId");
+////		Date ngayKhamConveter = null;
+////		try {
+////			ngayKhamConveter = (Date) df.parse(ngayKham);
+////		} catch (ParseException e) {
+////			e.printStackTrace();
+////		}
+////		int buoiKham = Integer.parseInt(request.getParameter("buoiKham"));
+////		results = bacSiDAOImpl.findBacSiByDichVuIdAndNgayKhamAndBuoiKham(dichVuId, ngayKhamConveter, buoiKham);
+////		switch (command) {
+////		case "findBacSiByDichVuIdAndNgayKhamAndBuoiKham":
+////			String dichVuId = request.getParameter("dichVuId");
+////			results = bacSiDAOImpl.findBacSiByDichVuIdAndNgayKhamAndBuoiKham(dichVuId, ngayKhamConveter, buoiKham);
+////			break;
+////		case "findBacSiByLichBieu":
+////			String phongKhamId = request.getParameter("phongKhamId");
+////			results = bacSiDAOImpl.findBacSiByLichBieu(ngayKhamConveter, buoiKham, phongKhamId);
+////			break;
+////		}
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		String json = new Gson().toJson(lst);
+//		response.getWriter().write(json);	
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+		out.close();
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

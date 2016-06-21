@@ -1,0 +1,28 @@
+package test;
+
+import java.util.ArrayList;
+
+import javax.persistence.TypedQuery;
+
+import java.util.*;
+import dao.BacSiDAOImpl;
+import model.BacSi;
+
+public class test1 {
+
+	public static void main(String[] args) {
+		BacSiDAOImpl bacSiDAOImpl=new BacSiDAOImpl();
+		 
+		TypedQuery<BacSi> q = (TypedQuery<BacSi>) bacSiDAOImpl.listAllBacSi();
+		List<BacSi> res = q.getResultList();
+		for(BacSi bs : res)
+		{
+			System.out.println(bs.getHoTen());
+		}		
+		
+		
+		
+
+	}
+
+}
