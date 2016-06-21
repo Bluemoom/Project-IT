@@ -177,8 +177,8 @@
 										<!--</select>-->
 										<select class="form-control" ng-model="phongKhamId"
 											ng-change="loadBacSiByPhongKham()">
-											<option ng-selected="phongKhamId == item.phongKhamId"
-												ng-repeat="item in PhongKhams" ng-value="item.phongKhamId">{{item.tenPhongKham}}
+											<option ng-selected="phongKhamId == item.phongKham_Id"
+												ng-repeat="item in PhongKhams" ng-value="item.phongKham_Id">{{item.tenPhongKham}}
 											</option>
 										</select>
 
@@ -191,15 +191,14 @@
 									<div class="col-sm-4">
 										<select class="form-control" ng-model="bacSiId"
 											ng-change="loadPhongKhamByBacSi()">
-											<option ng-selected="bacSiId == item.bacSiId"
-												ng-repeat="item in BacSis" ng-value="item.bacSiId">{{item.hoTen}}
+											<option ng-selected="bacSiId == item.bacSi_Id"
+												ng-repeat="item in BacSis" ng-value="item.bacSi_Id">{{item.hoTen}}
 											</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Thời gian dự kiến</label>
-									<label class="col-sm-3 control-label" ng-model="caLam">{{caLam}}</label>
+									<label class="col-sm-3 control-label">Thời gian khám</label><label class="col-sm-3 control-label">{{thoiGianBatDau | date:' h:mma'}} -> {{thoiGianKetThuc | date:' h:mma'}}</label>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label"></label>
@@ -231,173 +230,6 @@
 	</div>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script>
-		var app = angular.module('myApp', []);
-
-		app
-				.controller(
-						'customersCtrl',
-						function($scope, $http) {
-							$scope.course = {
-								date : ''
-							};
-							$('#check-out').datepicker();
-							$('#check-out').datepicker().on(
-									'changeDate',
-									function(ev) {
-										$scope.course.date = $('#check-out')
-												.val();
-										$scope.$digest();
-										$scope.$watch('course.date', function(
-												newValue, oldValue) {
-											$scope.course.date = newValue;
-										});
-									});
-							$http(
-									{
-										method : 'GET',
-										url : 'http://localhost:8080/QLDatLichKham/DichVuRest?command=getAllDichVu',
-										headers : {
-											'Content-type' : 'application/json'
-										}
-									}).success(function(response) {
-								$scope.models = response;
-							}).error(function(error) {
-								$scope.error = error;
-							});
-							
-
-							$scope.data = {
-								buoiKham : null,
-								multipleSelect : [],
-								option1 : '1',
-							};
-
-							$scope.maDichVu = {
-								dichVu : null,
-								multipleSelect : [],
-								option1 : '1',
-							};
-
-							$scope.loadPhongKham = function() {
-
-								$http(
-										{
-											method : 'GET',
-											url : "http://localhost:8080/QLDatLichKham/PhongKhamRest?command=findPhongKhamByDichVuIdAndNgayKhamAndBuoiKham&dichVuId="
-													+ $scope.maDichVu.dichVu
-													+ "&ngayKham="
-													+ $scope.course.date
-													+ "&buoiKham="
-													+ $scope.data.buoiKham + "",
-											headers : {
-												'Content-type' : 'application/json'
-											}
-										}).success(function(response) {
-									$scope.PhongKhams = response;
-								}).error(function(error) {
-									$scope.error = error;
-								});
-
-								$http(
-										{
-											method : 'GET',
-											url : "http://localhost:8080/QLDatLichKham/BacSiRest?command=findBacSiByDichVuIdAndNgayKhamAndBuoiKham&dichVuId="
-													+ $scope.maDichVu.dichVu
-													+ "&ngayKham="
-													+ $scope.course.date
-													+ "&buoiKham="
-													+ $scope.data.buoiKham + "",
-											headers : {
-												'Content-type' : 'application/json'
-											}
-										}).success(function(response) {
-									$scope.BacSis = response;
-								}).error(function(error) {
-									$scope.error = error;
-								});
-								$scope.bacSiId = null;
-								$scope.phongKhamId = null;
-							}
-
-							$scope.loadBacSiByPhongKham = function() {
-								$http(
-										{
-											method : 'GET',
-											url : "http://localhost:8080/QLDatLichKham/BacSiRest?command=findBacSiByLichBieu&ngayKham="
-													+ $scope.course.date
-													+ "&buoiKham="
-													+ $scope.buoiKham
-													+ "&phongKhamId="
-													+ $scope.phongKhamId + "",
-											headers : {
-												'Content-type' : 'application/json'
-											}
-										}).success(function(response) {
-									$scope.bacSiId = response[0].bacSiId;
-								}).error(function(error) {
-									$scope.error = error;
-								});
-
-								$http(
-										{
-											method : 'GET',
-											url : "http://localhost:8080/QLDatLichKham/CaLamRest/findCaLamByLichBieu/"
-													+ $scope.course.date
-													+ "/"
-													+ $scope.buoiKham
-													+ "/"
-													+ $scope.phongKhamId + "",
-											headers : {
-												'Content-type' : 'application/json'
-											}
-										}).success(function(response) {
-									$scope.caLam = response.ca;
-								}).error(function(error) {
-									$scope.error = error;
-								});
-							}
-
-							$scope.loadPhongKhamByBacSi = function() {
-								$http(
-										{
-											method : 'GET',
-											url : "http://localhost:8080/QLDatLichKham/PhongKhamRest?command=findPhongKhamByLichBieu&ngayKham="
-													+ $scope.course.date
-													+ "&buoiKham="
-													+ $scope.buoiKham
-													+ "&bacSiId="
-													+ $scope.bacSiId + "",
-											headers : {
-												'Content-type' : 'application/json'
-											}
-										})
-										.success(
-												function(response) {
-													$scope.phongKhamId = response[0].phongKhamId;
-												}).error(function(error) {
-											$scope.error = error;
-										});
-
-								$http(
-										{
-											method : 'GET',
-											url : "http://localhost:8080/QLDatLichKham/CaLamRest/findCaLamByLichBieu/"
-													+ $scope.course.date
-													+ "/"
-													+ $scope.buoiKham
-													+ "/"
-													+ $scope.phongKhamId + "",
-											headers : {
-												'Content-type' : 'application/json'
-											}
-										}).success(function(response) {
-									$scope.caLam = response.ca;
-								}).error(function(error) {
-									$scope.error = error;
-								});
-							}
-						});
-	</script>
+	<script src="js/ThemMoi.js"></script>
 </body>
 </html>
