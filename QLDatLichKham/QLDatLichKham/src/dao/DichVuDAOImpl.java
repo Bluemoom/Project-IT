@@ -31,4 +31,21 @@ public class DichVuDAOImpl implements DichVuDAO {
 		return results;
 	}
 
+	@Override
+	public DichVu findDichVuById(String dichVuId) {
+		DichVu results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT d FROM DichVu d WHERE d.dichVu_Id = :dichVuId";
+			Query query = session.createQuery(hql);
+			query.setParameter("dichVuId", dichVuId);
+			results = (DichVu) query.list().get(0);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return results;
+	}
+
 }

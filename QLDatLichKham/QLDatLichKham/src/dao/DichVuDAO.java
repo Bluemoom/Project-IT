@@ -5,4 +5,6 @@ import model.*;
 
 public interface DichVuDAO {
 	List<DichVu> getAllDichVu();
+	
+	DichVu findDichVuById(String dichVuId);
 }

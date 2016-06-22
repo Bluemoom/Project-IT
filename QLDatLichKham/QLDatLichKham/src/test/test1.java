@@ -8,37 +8,46 @@ import java.util.*;
 import com.google.gson.Gson;
 
 import dao.BacSiDAOImpl;
+import dao.BenhNhanDAO;
+import dao.BenhNhanDAOImpl;
 import dao.CaKhamDAO;
 import dao.CaKhamDAOImpl;
 import dao.DichVuDAOImpl;
 import dao.PhongKhamDAOImpl;
 import model.BacSi;
+import model.BenhNhan;
 import model.CaKham;
 import model.DichVu;
 import model.PhongKham;
+import util.SentMail;
 
 public class test1 {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws Exception {
 		
 		BacSiDAOImpl bacSiDAOImpl=new BacSiDAOImpl();
 		PhongKhamDAOImpl phongKhamDAOImpl = new PhongKhamDAOImpl();
 		DichVuDAOImpl dichVuDAOImpl = new DichVuDAOImpl();
 		CaKhamDAO caKhamDAO = new CaKhamDAOImpl();
+		BenhNhanDAO benhNhanDAO = new BenhNhanDAOImpl();
 		
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String ngayLam = "01-06-2016";
         Date ngayKhamAfter = df.parse(ngayLam); 
 //		List<BacSi> lst = (List<BacSi>) bacSiDAOImpl.findBacSiByDichVuIdAndNgayKhamAndBuoiKham("DV001", ngayKhamAfter, 0);
 //      List<PhongKham> lst = phongKhamDAOImpl.findPhongKhamByDichVuIdAndNgayKhamAndBuoiKham("DV001", ngayKhamAfter, 1);
-//      List<DichVu> lst = dichVuDAOImpl.getAllDichVu();
-        List<CaKham> lst = caKhamDAO.findCaKhamByLichBieu(ngayKhamAfter, 0, "XN001");
-		String json = new Gson().toJson(lst); 
+      	BenhNhan lst = benhNhanDAO.findBenhNhanById(100002);
+//        CaKham lst = caKhamDAO.findCaKhamById(1);
+//        int result = caKhamDAO.updateCaKham(1,0);
+		String json = new Gson().toJson(lst.getHoTen()); 
 //		for(BacSi bs : lst)
 //		{
 //			System.out.println(bs.getHoTen());
 //		}	
 		System.out.println(json);
+		
+//		SentMail.send("smtp.gmail.com", "phamhongthuan@rocketmail.com", "phamthuannsth@gmail.com", "thuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
+		SentMail.send("smtp.gmail.com", "phamthuannsth@gmail.com", "tq1417@gmail.com", "quyenthuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
 		
 		
 		

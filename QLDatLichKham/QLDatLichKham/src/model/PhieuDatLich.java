@@ -43,6 +43,19 @@ public class PhieuDatLich {
 		this.hinhThucThanhToan = hinhThucThanhToan;
 		this.trangThai = trangThai;
 	}
+	
+	
+
+	public PhieuDatLich(String phongKham_Id, int benhNhan_Id, int caKham_Id, float phiDatLich, float chiPhi,
+			String hinhThucThanhToan, int trangThai) {
+		this.phongKham_Id = phongKham_Id;
+		this.benhNhan_Id = benhNhan_Id;
+		this.caKham_Id = caKham_Id;
+		this.phiDatLich = phiDatLich;
+		this.chiPhi = chiPhi;
+		this.hinhThucThanhToan = hinhThucThanhToan;
+		this.trangThai = trangThai;
+	}
 
 	public int getPhieuDatLich_Id() {
 		return phieuDatLich_Id;

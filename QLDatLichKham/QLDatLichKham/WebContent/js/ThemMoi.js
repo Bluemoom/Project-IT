@@ -117,6 +117,7 @@ app.controller('customersCtrl',function($scope, $http) {
 				}).success(function(response) {
 					$scope.thoiGianBatDau = Date.parse(response[0].thoiGianBatDau);
 					$scope.thoiGianKetThuc = Date.parse(response[0].thoiGianKetThuc);
+					$scope.caKham=response;
 				}).error(function(error) {
 					$scope.error = error;
 				});	

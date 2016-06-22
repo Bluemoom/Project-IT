@@ -34,5 +34,39 @@ SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		} 
 		return results;
 	}
+	@Override
+	public CaKham findCaKhamById(int caKhamId) {
+		CaKham results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT c FROM CaKham c WHERE c.caKham_Id = :caKhamId";
+			Query query = session.createQuery(hql);
+			query.setParameter("caKhamId", caKhamId);
+			results = (CaKham) query.list().get(0);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+	          session.getTransaction().rollback();
+		} 
+		return results;
+	}
+	@Override
+	public int updateCaKham(int caKhamId, int trangThai) {
+		int result = 0;
+		session.getTransaction().begin();
+		try {
+			String hql = "UPDATE CaKham SET trangThai = :trangThai WHERE caKham_Id = :caKhamId";
+			Query query = session.createQuery(hql);
+			query.setParameter("trangThai", trangThai);
+			query.setParameter("caKhamId", caKhamId);
+			result = query.executeUpdate();
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return result;
+	}
 
 }

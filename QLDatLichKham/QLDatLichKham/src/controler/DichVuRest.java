@@ -16,13 +16,14 @@ import dao.DichVuDAOImpl;
 import model.DichVu;
 import java.util.*;
 
-
 @WebServlet("/DichVuRest")
 public class DichVuRest extends HttpServlet {
 	DichVuDAO dichVuDAO = new DichVuDAOImpl();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String command = request.getParameter("command");
-		if(command.equalsIgnoreCase("getAllDichVu")) {
+		if (command.equalsIgnoreCase("getAllDichVu")) {
 			List<DichVu> results = dichVuDAO.getAllDichVu();
 			response.setContentType("application/json");
 			response.setCharacterEncoding("utf-8");
@@ -30,11 +31,11 @@ public class DichVuRest extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			out.print(json);
 			out.flush();
-		}		
+		}
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
