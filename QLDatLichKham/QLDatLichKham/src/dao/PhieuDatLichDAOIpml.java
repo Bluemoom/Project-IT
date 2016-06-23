@@ -84,9 +84,44 @@ public class PhieuDatLichDAOIpml implements PhieuDatLichDAO {
 		PhieuDatLich results = null;
 		try {
 			session.getTransaction().begin();
-			String hql = "SELECT p FROM PhieuDatLich p WHERE p.benhNhan_Id = :benhNhanId AND rownum =1";
+			String hql = "SELECT p FROM PhieuDatLich p WHERE p.benhNhan_Id = :benhNhanId AND rownum =1 ORDER BY p.phieuDatLich_Id DESC";
 			Query query = session.createQuery(hql);
 			query.setParameter("benhNhanId", benhNhanId);
+			results = (PhieuDatLich) query.list().get(0);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+	          session.getTransaction().rollback();
+		} 
+		return results;
+	}
+
+	@Override
+	public List<Object[]> findLichKhamByBenhNhan(int benhNhanId) {
+		List<Object[]> results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT p,c,l,pk,b FROM PhieuDatLich p, CaKham c, LichBieu l, PhongKham pk, BacSi b"
+            + " WHERE p.caKham_Id = c.caKham_Id AND c.lichBieu_Id = l.lichBieu_Id AND l.phongKham_Id = pk.phongKham_Id AND l.bacSi_Id = b.bacSi_Id AND p.trangThai = 1 AND p.benhNhan_Id = :benhNhanId";
+			Query query = session.createQuery(hql);
+			query.setParameter("benhNhanId", benhNhanId);
+			results = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+	          session.getTransaction().rollback();
+		} 
+		return results;
+	}
+
+	@Override
+	public PhieuDatLich findPhieuDatLichById(int phieuDatLichId) {
+		PhieuDatLich results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT p FROM PhieuDatLich p WHERE p.phieuDatLich_Id = :phieuDatLichId";
+			Query query = session.createQuery(hql);
+			query.setParameter("phieuDatLichId", phieuDatLichId);
 			results = (PhieuDatLich) query.list().get(0);
 			session.getTransaction().commit();
 		} catch (Exception e) {

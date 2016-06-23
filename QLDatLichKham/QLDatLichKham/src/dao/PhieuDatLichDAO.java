@@ -15,5 +15,9 @@ public interface PhieuDatLichDAO {
 	List<PhieuDatLich> findPhieuDatLichByBenhNhan(int benhNhanId);
 	
 	PhieuDatLich findLastestPhieuDatLichByBenhNhan(int benhNhanId);
+	
+	List<Object[]> findLichKhamByBenhNhan(int benhNhanId);
+	
+	PhieuDatLich findPhieuDatLichById(int phieuDatLichId);
 
 }
