@@ -24,7 +24,7 @@ public class PhieuDatLich {
 	@Column(name = "CHIPHI")
 	private float chiPhi;
 	@Column(name = "HINHTHUCTHANHTOAN")
-	private String hinhThucThanhToan;
+	private int hinhThucThanhToan;
 	@Column(name = "TRANGTHAI")
 	private int trangThai;
 
@@ -33,7 +33,7 @@ public class PhieuDatLich {
 
 	public PhieuDatLich(int phieuDatLich_Id, String phongKham_Id,
 			int benhNhan_Id, int caKham_Id, float phiDatLich, float chiPhi,
-			String hinhThucThanhToan, int trangThai) {
+			int hinhThucThanhToan, int trangThai) {
 		this.phieuDatLich_Id = phieuDatLich_Id;
 		this.phongKham_Id = phongKham_Id;
 		this.benhNhan_Id = benhNhan_Id;
@@ -47,7 +47,7 @@ public class PhieuDatLich {
 	
 
 	public PhieuDatLich(String phongKham_Id, int benhNhan_Id, int caKham_Id, float phiDatLich, float chiPhi,
-			String hinhThucThanhToan, int trangThai) {
+			int hinhThucThanhToan, int trangThai) {
 		this.phongKham_Id = phongKham_Id;
 		this.benhNhan_Id = benhNhan_Id;
 		this.caKham_Id = caKham_Id;
@@ -105,11 +105,11 @@ public class PhieuDatLich {
 		this.chiPhi = chiPhi;
 	}
 
-	public String getHinhThucThanhToan() {
+	public int getHinhThucThanhToan() {
 		return hinhThucThanhToan;
 	}
 
-	public void setHinhThucThanhToan(String hinhThucThanhToan) {
+	public void setHinhThucThanhToan(int hinhThucThanhToan) {
 		this.hinhThucThanhToan = hinhThucThanhToan;
 	}
 
