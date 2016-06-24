@@ -44,6 +44,25 @@ public class CaKhamRest extends HttpServlet {
 			out.print(json);
 			out.flush();
 		}	
+		else if(command.equalsIgnoreCase("findCaKhamByBacSi")) {
+			String ngayKham = request.getParameter("ngayKham");
+			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+			Date ngayKhamConveter = null;
+			try {
+				ngayKhamConveter = (Date) df.parse(ngayKham);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			int buoiKham = Integer.parseInt(request.getParameter("buoiKham"));
+			int bacSiId = Integer.parseInt(request.getParameter("bacSiId"));
+			List<CaKham> results = caKhamDAO.findCaKhamByBacSi(ngayKhamConveter, buoiKham, bacSiId);
+			response.setContentType("application/json");
+			response.setCharacterEncoding("utf-8");
+			String json = new Gson().toJson(results);
+			PrintWriter out = response.getWriter();
+			out.print(json);
+			out.flush();
+		}
 	}
 
 	

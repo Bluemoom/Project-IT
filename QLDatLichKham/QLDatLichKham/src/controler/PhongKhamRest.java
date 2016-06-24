@@ -45,7 +45,7 @@ public class PhongKhamRest extends HttpServlet {
 					buoiKham);
 			break;
 		case "findPhongKhamByLichBieu":
-			long bacSiId = Integer.parseInt(request.getParameter("bacSiId"));
+			int bacSiId = Integer.parseInt(request.getParameter("bacSiId"));
 			results = phongKhamDAOImpl.findPhongKhamByLichBieu(ngayKhamConveter, buoiKham, bacSiId);
 			break;
 		}

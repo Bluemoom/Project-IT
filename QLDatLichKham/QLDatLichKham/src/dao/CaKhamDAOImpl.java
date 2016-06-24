@@ -68,5 +68,23 @@ SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		}
 		return result;
 	}
+	@Override
+	public List<CaKham> findCaKhamByBacSi(Date ngayLam, int buoiLam, int bacSiId) {
+		List<CaKham> results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT c FROM CaKham c, LichBieu l WHERE c.lichBieu_Id = l.lichBieu_Id AND l.ngayLam = :ngayLam AND l.buoiLam = :buoiLam AND l.bacSi_Id = :bacSiId AND c.trangThai = 1 AND rownum = 1";
+			Query query = session.createQuery(hql);
+			query.setParameter("ngayLam", ngayLam);
+			query.setParameter("buoiLam", buoiLam);
+			query.setParameter("bacSiId", bacSiId);
+			results = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+	          session.getTransaction().rollback();
+		} 
+		return results;
+	}
 
 }
