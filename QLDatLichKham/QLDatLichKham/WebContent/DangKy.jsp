@@ -44,7 +44,7 @@
                                  <input type="text" placeholder="Họ tên..."
                                     class='form-control' name="hoten"  />
                               </div>
-                              <label class="col-sm-3 control-label">Viết liền không dấu...</label>
+                              
                            </div>
                            <div class="form-group">
                               <label class="col-sm-3 control-label ">Ngày sinh</label>
@@ -91,7 +91,7 @@
                                  <input type='text' class='form-control' name="diachi"
                                     placeholder="Địa chỉ..."  id="diachi" />
                               </div>
-                              <label class="col-sm-3 control-label">Viết liền không dấu...</label>
+                              
                            </div>
                            <div class="form-group">
                               <label class="col-sm-3 control-label"></label>

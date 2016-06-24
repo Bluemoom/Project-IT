@@ -13,11 +13,14 @@ import dao.BenhNhanDAOImpl;
 import dao.CaKhamDAO;
 import dao.CaKhamDAOImpl;
 import dao.DichVuDAOImpl;
+import dao.PhieuDatLichDAOIpml;
 import dao.PhongKhamDAOImpl;
+import dao.ThuNganDAOImpl;
 import model.BacSi;
 import model.BenhNhan;
 import model.CaKham;
 import model.DichVu;
+import model.PhieuDatLich;
 import model.PhongKham;
 import util.SentMail;
 
@@ -30,6 +33,8 @@ public class test1 {
 		DichVuDAOImpl dichVuDAOImpl = new DichVuDAOImpl();
 		CaKhamDAO caKhamDAO = new CaKhamDAOImpl();
 		BenhNhanDAO bna = new BenhNhanDAOImpl();
+		ThuNganDAOImpl tna = new ThuNganDAOImpl();
+		PhieuDatLichDAOIpml pla = new PhieuDatLichDAOIpml();
 		
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String ngayLam = "01-06-2016";
@@ -44,13 +49,10 @@ public class test1 {
 //		{
 //			System.out.println(bs.getHoTen());
 //		}	
-		bna.findBenhNhanByMapin(100041,123);
+		System.out.print(tna.checkLogin("vandat", "123456").getUserName());
 		
 //		SentMail.send("smtp.gmail.com", "phamhongthuan@rocketmail.com", "phamthuannsth@gmail.com", "thuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
 //		SentMail.send("smtp.gmail.com", "phamthuannsth@gmail.com", "tq1417@gmail.com", "quyenthuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
-		
-		
-		
 
 	}
 

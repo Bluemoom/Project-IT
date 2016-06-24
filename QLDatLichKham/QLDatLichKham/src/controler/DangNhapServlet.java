@@ -52,18 +52,26 @@ public class DangNhapServlet extends HttpServlet {
 		if (command.equalsIgnoreCase("dangnhap"))
 		{
 			String url = "DangNhap.jsp";
-			String mapin = request.getParameter("mapin");
+			String mapin = request.getParameter("mapin");		
 			String benhNhan_Id = request.getParameter("benhNhan_Id");
-			BenhNhan bn = new BenhNhan();
-			bn = bna.findBenhNhanByMapin(Integer.parseInt(mapin), Integer.parseInt(benhNhan_Id));
-			if (bn != null)
+			if (Integer.parseInt(mapin) == 0)
 			{
-				url = "/ThongTinBenhNhan.jsp";
-				session.setAttribute("currentUser", bn);
-			}
-			else {
 				String err_dangnhap = "MaPin khong dung!";
 				request.setAttribute("err_dangnhap", err_dangnhap);
+			}
+			else
+			{
+				BenhNhan bn = new BenhNhan();
+				bn = bna.findBenhNhanByMapin(Integer.parseInt(mapin), Integer.parseInt(benhNhan_Id));
+				if (bn != null)
+				{
+					url = "/ThongTinBenhNhan.jsp";
+					session.setAttribute("currentUser", bn);
+				}
+				else {
+					String err_dangnhap = "MaPin khong dung!";
+					request.setAttribute("err_dangnhap", err_dangnhap);
+				}
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);

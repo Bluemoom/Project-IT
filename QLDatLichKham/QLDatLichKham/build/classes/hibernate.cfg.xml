@@ -32,6 +32,7 @@
 	<mapping class="model.CaKham" />
 	<mapping class="model.PhieuDatLich" />
 	<mapping class="model.PhieuKetQua" />
+	<mapping class="model.ThuNgan" />
 	
 </session-factory>
 </hibernate-configuration>

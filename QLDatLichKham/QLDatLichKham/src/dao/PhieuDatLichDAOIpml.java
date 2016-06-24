@@ -2,9 +2,11 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import model.PhieuDatLich;
 import model.PhongKham;
@@ -131,4 +133,42 @@ public class PhieuDatLichDAOIpml implements PhieuDatLichDAO {
 		return results;
 	}
 
+	@Override
+	public void updatePhieuDatLich(int phieuDatLich_Id, float phiDatLich, int hinhThucThanhToan) {
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "UPDATE PhieuDatLich SET phiDatLich  = :phiDatLich, hinhThucThanhToan = :hinhThucThanhToan WHERE phieuDatLich_Id = :phieuDatLich_Id";
+			Query query = session.createQuery(hql);
+			query.setParameter("phiDatLich",phiDatLich);
+			query.setParameter("hinhThucThanhToan",hinhThucThanhToan);
+			query.setParameter("phieuDatLich_Id",phieuDatLich_Id);
+			query.executeUpdate();
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			if (session.beginTransaction() != null)
+			{
+				session.beginTransaction().rollback();
+			}
+			e.printStackTrace();
+		}	
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PhieuDatLich> showListPhieuDatLich() {
+		List<PhieuDatLich> results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT p FROM PhieuDatLich p";
+			Query query = session.createQuery(hql);
+			results = query.list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+	          session.getTransaction().rollback();
+		} 
+		return results;
+	}
 }

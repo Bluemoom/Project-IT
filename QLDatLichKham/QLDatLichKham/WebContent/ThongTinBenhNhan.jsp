@@ -51,15 +51,16 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Họ tên</label>
 									<div class="col-sm-4">
-										<input type="text" placeholder="Họ tên..." class='form-control' 
-										name="hoten" required="" value=<%=bn.getHoTen() %>>
+										<input type="text"  class='form-control'
+										name="hoten" value="<%=bn.getHoTen()%>" required="">
+										
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label ">Ngày sinh</label>
 									<div class="col-sm-3">
-										<input type='text' ng-model='course.date' class='form-control'
-											data-date-format="dd-mm-yyyy" value=<%=bn.getNgaySinh() %>
+										<input type='text' class='form-control'
+											data-date-format="dd-mm-yyyy" value="<%=bn.getNgaySinh().toString()%>"
 											placeholder="Ngày sinh..." required="" id="check-out" name="ngaysinh">
 									</div>
 								</div>
@@ -98,7 +99,7 @@
 									<label class="col-sm-3 control-label">Địa chỉ</label>
 									<div class="col-sm-4">
 										<input type='text' class='form-control' name="diachi",
-											placeholder="Địa chỉ..." required="" id="diachi" value=<%=bn.getDiaChi() %>>
+											placeholder="Địa chỉ..." required="" id="diachi" value="<%=bn.getDiaChi() %>">
 									</div>
 								</div>
 								<div class="form-group">
