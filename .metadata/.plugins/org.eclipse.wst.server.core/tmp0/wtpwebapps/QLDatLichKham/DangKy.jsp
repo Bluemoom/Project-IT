@@ -44,6 +44,7 @@
                                  <input type="text" placeholder="Họ tên..."
                                     class='form-control' name="hoten"  />
                               </div>
+                              <label class="col-sm-3 control-label">Viết liền không dấu...</label>
                            </div>
                            <div class="form-group">
                               <label class="col-sm-3 control-label ">Ngày sinh</label>
@@ -82,6 +83,7 @@
                                  <input type="email" class='form-control' name="email"
                                     placeholder="Email..."  id="email" />
                               </div>
+                              <label class="col-sm-3 control-label">Ví dụ: example@example.com...</label>
                            </div>
                            <div class="form-group">
                               <label class="col-sm-3 control-label">Địa chỉ</label>
@@ -89,6 +91,7 @@
                                  <input type='text' class='form-control' name="diachi"
                                     placeholder="Địa chỉ..."  id="diachi" />
                               </div>
+                              <label class="col-sm-3 control-label">Viết liền không dấu...</label>
                            </div>
                            <div class="form-group">
                               <label class="col-sm-3 control-label"></label>

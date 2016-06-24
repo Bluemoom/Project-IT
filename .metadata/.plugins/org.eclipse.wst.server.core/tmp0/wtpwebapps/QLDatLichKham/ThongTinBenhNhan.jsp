@@ -29,6 +29,19 @@
      <jsp:include page="header1.jsp"></jsp:include>
       <div class="container">
          <div class="row">
+         	<div class="contentright col-md-2">
+               <ul class="nav nav-pills nav-stacked">
+                  <li role="presentation" class="active"><a href="#">Thông
+                     tin cá nhân</a>
+                  </li>
+                  <li role="presentation"><a href="add_schedule.html">Đặt
+                     mới lịch khám</a>
+                  </li>
+                  <li role="presentation"><a href="schedule_list.html">Danh
+                     sách lịch khám</a>
+                  </li>
+               </ul>
+            </div>
             <div class="contentleft col-md-10">
 					<div class="contentleft col-md-10" ng-app="myApp"
 						ng-controller="customersCtrl">

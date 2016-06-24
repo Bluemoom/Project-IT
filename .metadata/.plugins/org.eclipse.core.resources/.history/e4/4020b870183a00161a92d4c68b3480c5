@@ -29,7 +29,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="../QLDatLichKham/DangNhap.jsp">Đăng
 								nhập</a></li>
-						<li><a href="../QLDatLichKham/DangKy.jsp">Đăng ký</a></li>
+						<li><a href="../navbar-fixed-top/">Đăng ký</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Phạm Hồng Thuận<span class="caret"></span></a>

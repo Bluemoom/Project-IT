@@ -18,10 +18,10 @@
 			<li><a href="doctors.jsp">Bác sĩ</a></li>
 			<li><a href="services.jsp">Dịch vụ</a></li>
 			<% if (bn == null) %>
-				<li><a href="forms.jsp">Đăng ký</a></li>
+				<li><a href="../QLDatLichKham/DangKy.jsp">Đăng ký</a></li>
 			<li><a href="contact.jsp">Liên hệ</a></li>
 			<% if (bn == null) %>
-				<li><a href="blog.jsp">Đăng nhập</a></li>
+				<li><a href="../QLDatLichKham/DangNhap.jsp">Đăng nhập</a></li>
 			<% if (bn != null) { %>
 				<h2>Xin chào, <%=bn.getHoTen() %></h2>
 				<a style="font-size: 24px" href="DangNhapServlet?command=dangxuat">Đăng xuất</a>
