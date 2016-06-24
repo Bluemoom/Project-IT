@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:Hospital</property>
+	<property name="connection.username">system</property>
+	<property name="connection.password">system</property>
+	
+	<!-- JDBC connection pool (use the built-in) -->
+	<property name="connection.pool_size">1</property>
+
+	<!-- SQL dialect -->
+	<!-- cho phep hibernate toi uu hoa SQL -->
+	<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+	<!-- Enable Hibernate’s automatic session context management -->
+	<property name="current_session_context_class">thread</property>
+
+	<!-- Disable the second-level cache -->
+	<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+	<!-- Entity -->
+	
+	<mapping class="model.BacSi" />
+	<mapping class="model.BenhNhan" />
+	<mapping class="model.DichVu" />
+	<mapping class="model.PhongKham" />
+	<mapping class="model.LichBieu" />
+	<mapping class="model.CaKham" />
+	<mapping class="model.PhieuDatLich" />
+	<mapping class="model.PhieuKetQua" />
+	
+</session-factory>
+</hibernate-configuration>
+

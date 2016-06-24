@@ -5,9 +5,9 @@
 <hibernate-configuration>
 <session-factory>
 	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:Hospital</property>
+	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:HTP</property>
 	<property name="connection.username">system</property>
-	<property name="connection.password">Lovesunny174</property>
+	<property name="connection.password">system</property>
 	
 	<!-- JDBC connection pool (use the built-in) -->
 	<property name="connection.pool_size">1</property>

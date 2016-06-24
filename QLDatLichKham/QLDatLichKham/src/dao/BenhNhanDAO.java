@@ -5,4 +5,15 @@ import model.BenhNhan;
 public interface BenhNhanDAO {
 
 	BenhNhan findBenhNhanById(int benhNhanId);
+	
+	public void themBenhNhan(BenhNhan bn);
+	
+	public boolean checkEmail(String email);
+	
+	public BenhNhan getLastBenhNhan();
+	
+	public BenhNhan findBenhNhanByMapin(Integer mapin);
+	
+	public void updateProfile(int benhNhan_Id, String hoTen, java.util.Date ngaySinh,
+			int gioiTinh, String cmnd, String sdt, String email, String diaChi);
 }
