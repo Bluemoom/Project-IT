@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,10 +33,9 @@ public class BenhNhan {
 	private int maPin;
 	public BenhNhan() {
 	}
-	
+
 	public BenhNhan(String hoTen, Date ngaySinh, int gioiTinh, String cmnd, String sdt, String email, String diaChi,
 			int maPin) {
-		super();
 		this.hoTen = hoTen;
 		this.ngaySinh = ngaySinh;
 		this.gioiTinh = gioiTinh;

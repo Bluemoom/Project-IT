@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<!DOCTYPE html  >
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Hệ thống đặt lịch và trả kết quả trực tuyến</title>
+      <link href="css/styles.css" rel="stylesheet"/>
+      <link href="css/jquery-ui.css" rel="stylesheet"/>
+      <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+      <link href="css/customize.css" rel="stylesheet" media="screen" />
+      <link href="css/font-awesome.min.css" rel="stylesheet" media="screen" />
+      <link href="css/footer-basic-centered.css" rel="stylesheet"
+         media="screen" />
+      <link rel="stylesheet" href="css/style.css" type="text/css" />
+      <script src="js/angular.min.js"></script>
+      <script src="js/jquery.min.js"></script>
+
+      <!--Demo-->
+      <script src="js/prefixfree.min.js"></script>
+   </head>
+   <body>
+     <jsp:include page="header1.jsp"></jsp:include>
+      <div class="container">
+         <div class="row">         
+         </div>
+      </div>
+      <!-- footer -->
+     <jsp:include page="footer1.jsp"></jsp:include> 
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/bootstrap-datepicker.js"></script>
+      <script src="js/ThemMoi.js"></script>
+   </body>
+</html>

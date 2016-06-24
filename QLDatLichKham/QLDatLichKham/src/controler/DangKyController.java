@@ -31,7 +31,7 @@ public class DangKyController extends HttpServlet {
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		Date ngaySinhConveter = null;
 		try {
-			ngaySinhConveter = (Date) df.parse(ngaySinh);
+			ngaySinhConveter = (Date)df.parse(ngaySinh);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
