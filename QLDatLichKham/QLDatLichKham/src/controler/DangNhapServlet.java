@@ -53,8 +53,9 @@ public class DangNhapServlet extends HttpServlet {
 		{
 			String url = "DangNhap.jsp";
 			String mapin = request.getParameter("mapin");
+			String benhNhan_Id = request.getParameter("benhNhan_Id");
 			BenhNhan bn = new BenhNhan();
-			bn = bna.findBenhNhanByMapin(Integer.parseInt(mapin));
+			bn = bna.findBenhNhanByMapin(Integer.parseInt(mapin), Integer.parseInt(benhNhan_Id));
 			if (bn != null)
 			{
 				url = "/ThongTinBenhNhan.jsp";

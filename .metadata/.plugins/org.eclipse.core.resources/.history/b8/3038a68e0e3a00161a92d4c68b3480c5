@@ -1,0 +1,137 @@
+package dao;
+
+import java.sql.Date;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import antlr.collections.List;
+import model.BenhNhan;
+import model.DichVu;
+import util.HibernateUtil;
+
+public class BenhNhanDAOImpl implements BenhNhanDAO {
+
+	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	Session session = sessionFactory.openSession();
+	@Override
+	public BenhNhan findBenhNhanById(int benhNhanId) {
+		BenhNhan results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT b FROM BenhNhan b WHERE b.benhNhan_Id = :benhNhanId";
+			Query query = session.createQuery(hql);
+			query.setParameter("benhNhanId", benhNhanId);
+			results = (BenhNhan) query.list().get(0);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return results;
+	}
+	
+	@Override
+	public void themBenhNhan(BenhNhan bn) {		
+		try {
+			session.getTransaction().begin();
+			session.save(bn);
+			session.getTransaction().commit();
+		} catch (HibernateException e) {			
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean checkEmail(String email) {
+		Transaction tx = null;
+		java.util.List<BenhNhan> bn = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "SELECT benhnhan FROM BenhNhan benhnhan WHERE benhnhan.email like :email";
+			Query query = session.createQuery(hql);
+			query.setParameter("email",email);
+			bn = query.list();
+			tx.commit();
+			if (bn.size()>0)
+			{
+				return true;
+			}
+		} catch (HibernateException e) {
+			if (tx != null)
+			{
+				tx.rollback();
+			}
+			e.printStackTrace(); 
+		}
+		return false;
+	}
+
+	@Override
+	public BenhNhan getLastBenhNhan() {
+		BenhNhan results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT b FROM BenhNhan b WHERE rownum = 1 ORDER BY b.benhNhan_Id DESC";
+			Query query = session.createQuery(hql);
+			results = (BenhNhan) query.list().get(0);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return results;
+	}
+
+	@Override
+	public BenhNhan findBenhNhanByMapin(Integer maPin, int benhNhan_Id) {
+		BenhNhan results = null;
+		try {
+			session.getTransaction().begin();
+			String hql = "SELECT b FROM BenhNhan b WHERE b.maPin = :maPin and b.benhNhan_Id = :benhNhan_Id";
+			Query query = session.createQuery(hql);
+			query.setParameter("maPin",maPin);
+			results = (BenhNhan) query.list().get(0);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		return results;
+	}
+
+	@Override
+	public void updateProfile(int benhNhan_Id, String hoTen, java.util.Date ngaySinh,
+			int gioiTinh, String cmnd, String sdt, String email, String diaChi) {
+	
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			String hql = "UPDATE BenhNhan SET hoTen  = :hoTen, ngaySinh = :ngaySinh, gioiTinh = :gioiTinh, cmnd = :cmnd, sdt = :sdt, email = :email, diaChi = :diaChi WHERE benhNhan_Id = :benhNhan_Id";
+			Query query = session.createQuery(hql);
+			query.setParameter("hoTen",hoTen);
+			query.setParameter("ngaySinh",ngaySinh);
+			query.setParameter("gioiTinh",gioiTinh);
+			query.setParameter("cmnd",cmnd);
+			query.setParameter("sdt",sdt);
+			query.setParameter("email",email);
+			query.setParameter("diaChi",diaChi);
+			query.setParameter("benhNhan_Id",benhNhan_Id);
+			query.executeUpdate();
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			if (session.beginTransaction() != null)
+			{
+				session.beginTransaction().rollback();
+			}
+			e.printStackTrace();
+		}
+	}
+}

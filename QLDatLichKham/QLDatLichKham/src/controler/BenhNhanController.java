@@ -47,7 +47,8 @@ public class BenhNhanController extends HttpServlet {
 		String sdt = request.getParameter("SDT");
 		String email = request.getParameter("email");
 		String diaChi = request.getParameter("diachi");
-		bna.updateProfile(bn.getBenhNhan_Id(), hoTen, ngaySinhConveter, gioiTinh, cmnd, sdt, email, diaChi);
+		String maPin = request.getParameter("maPin");
+		bna.updateProfile(bn.getBenhNhan_Id(), hoTen, ngaySinhConveter, gioiTinh, cmnd, sdt, email, diaChi, Integer.parseInt(maPin));
 		bn = bna.findBenhNhanById(bn.getBenhNhan_Id());
 		session.setAttribute("currentUser", bn);
 		RequestDispatcher rd = request.getRequestDispatcher("/ThongTinBenhNhan.jsp");

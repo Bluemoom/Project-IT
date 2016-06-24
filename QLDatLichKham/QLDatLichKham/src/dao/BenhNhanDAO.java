@@ -12,8 +12,8 @@ public interface BenhNhanDAO {
 	
 	public BenhNhan getLastBenhNhan();
 	
-	public BenhNhan findBenhNhanByMapin(Integer mapin);
+	public BenhNhan findBenhNhanByMapin(Integer mapin, int benhNhan_Id);
 	
 	public void updateProfile(int benhNhan_Id, String hoTen, java.util.Date ngaySinh,
-			int gioiTinh, String cmnd, String sdt, String email, String diaChi);
+			int gioiTinh, String cmnd, String sdt, String email, String diaChi, int maPin);
 }

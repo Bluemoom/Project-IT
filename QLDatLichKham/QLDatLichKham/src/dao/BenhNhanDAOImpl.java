@@ -90,13 +90,14 @@ public class BenhNhanDAOImpl implements BenhNhanDAO {
 	}
 
 	@Override
-	public BenhNhan findBenhNhanByMapin(Integer maPin) {
+	public BenhNhan findBenhNhanByMapin(Integer maPin, int benhNhan_Id) {
 		BenhNhan results = null;
 		try {
 			session.getTransaction().begin();
-			String hql = "SELECT b FROM BenhNhan b WHERE b.maPin = :maPin";
+			String hql = "SELECT b FROM BenhNhan b WHERE b.maPin = :maPin and b.benhNhan_Id = :benhNhan_Id";
 			Query query = session.createQuery(hql);
 			query.setParameter("maPin",maPin);
+			query.setParameter("benhNhan_Id",benhNhan_Id);
 			results = (BenhNhan) query.list().get(0);
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -108,12 +109,12 @@ public class BenhNhanDAOImpl implements BenhNhanDAO {
 
 	@Override
 	public void updateProfile(int benhNhan_Id, String hoTen, java.util.Date ngaySinh,
-			int gioiTinh, String cmnd, String sdt, String email, String diaChi) {
+			int gioiTinh, String cmnd, String sdt, String email, String diaChi, int maPin) {
 	
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			String hql = "UPDATE BenhNhan SET hoTen  = :hoTen, ngaySinh = :ngaySinh, gioiTinh = :gioiTinh, cmnd = :cmnd, sdt = :sdt, email = :email, diaChi = :diaChi WHERE benhNhan_Id = :benhNhan_Id";
+			String hql = "UPDATE BenhNhan SET hoTen  = :hoTen, ngaySinh = :ngaySinh, gioiTinh = :gioiTinh, cmnd = :cmnd, sdt = :sdt, email = :email, diaChi = :diaChi, maPin = :maPin WHERE benhNhan_Id = :benhNhan_Id";
 			Query query = session.createQuery(hql);
 			query.setParameter("hoTen",hoTen);
 			query.setParameter("ngaySinh",ngaySinh);
@@ -122,6 +123,7 @@ public class BenhNhanDAOImpl implements BenhNhanDAO {
 			query.setParameter("sdt",sdt);
 			query.setParameter("email",email);
 			query.setParameter("diaChi",diaChi);
+			query.setParameter("maPin",maPin);
 			query.setParameter("benhNhan_Id",benhNhan_Id);
 			query.executeUpdate();
 			tx.commit();

@@ -1,0 +1,48 @@
+<%@page import="model.BenhNhan"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+   
+<%
+	BenhNhan bn = (BenhNhan) session.getAttribute("currentUser");
+%>   
+<div id="header">
+	<div>
+		<div>
+			<span>Đảm bảo sức khỏe sinh sản phụ nữ...</span> <a href="index.jsp"
+			class="logo"><img src="images/logo.png" alt=""></a> <span
+			class="tagline">Làm mẹ là điều tuyệt vời nhất!</span>
+		</div>
+		<ul>
+			<li class="selected"><a href="index.jsp">Trang chủ</a></li>
+			<li><a href="about.jsp">Giới thiệu</a></li>
+			<li><a href="doctors.jsp">Bác sĩ</a></li>
+			<li><a href="services.jsp">Dịch vụ</a></li>
+			<% if (bn == null) { %>
+				<li><a href="forms.jsp">Đăng ký</a></li>
+			<% } %>
+			<li><a href="contact.jsp">Liên hệ</a></li>
+			<% if (bn == null) { %>
+				<li><a href="blog.jsp">Đăng nhập</a></li>
+			<% } else %>
+				<div class="container">
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="nav navbar-nav navbar-right">
+									<li class="dropdown"><a href="#" class="dropdown-toggle"
+										data-toggle="dropdown" role="button" aria-haspopup="true"
+										aria-expanded="false">Xin chào, <%=bn.getHoTen() %></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Thông tin cá nhân</a></li>
+											<li><a href="DangNhapServlet?command=dangxuat">Đăng xuất</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			<% %>
+		</ul>
+	</div>
+</div>

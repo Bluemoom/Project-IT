@@ -29,22 +29,22 @@ public class test1 {
 		PhongKhamDAOImpl phongKhamDAOImpl = new PhongKhamDAOImpl();
 		DichVuDAOImpl dichVuDAOImpl = new DichVuDAOImpl();
 		CaKhamDAO caKhamDAO = new CaKhamDAOImpl();
-		BenhNhanDAO benhNhanDAO = new BenhNhanDAOImpl();
+		BenhNhanDAO bna = new BenhNhanDAOImpl();
 		
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String ngayLam = "01-06-2016";
         Date ngayKhamAfter = df.parse(ngayLam); 
 //		List<BacSi> lst = (List<BacSi>) bacSiDAOImpl.findBacSiByDichVuIdAndNgayKhamAndBuoiKham("DV001", ngayKhamAfter, 0);
-      List<PhongKham> lst = phongKhamDAOImpl.findPhongKhamByLichBieu(ngayKhamAfter, 0, 100000);
+//      List<PhongKham> lst = phongKhamDAOImpl.findPhongKhamByLichBieu(ngayKhamAfter, 0, 100000);
 //      BenhNhan lst = benhNhanDAO.findBenhNhanById(100002);
 //        CaKham lst = caKhamDAO.findCaKhamById(1);
 //        int result = caKhamDAO.updateCaKham(1,0);
-		String json = new Gson().toJson(lst); 
+//		String json = new Gson().toJson(lst); 
 //		for(BacSi bs : lst)
 //		{
 //			System.out.println(bs.getHoTen());
 //		}	
-		System.out.println(json);
+		bna.findBenhNhanByMapin(100041,123);
 		
 //		SentMail.send("smtp.gmail.com", "phamhongthuan@rocketmail.com", "phamthuannsth@gmail.com", "thuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
 //		SentMail.send("smtp.gmail.com", "phamthuannsth@gmail.com", "tq1417@gmail.com", "quyenthuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
