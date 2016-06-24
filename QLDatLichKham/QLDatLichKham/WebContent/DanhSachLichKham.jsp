@@ -22,6 +22,7 @@
       <link href="css/font-awesome.min.css" rel="stylesheet" media="screen" />
       <link href="css/footer-basic-centered.css" rel="stylesheet"
          media="screen" />
+         <link rel="stylesheet" href="css/style.css" type="text/css" />
       <script src="js/angular.min.js"></script>
       <!--Demo-->
    </head>
@@ -58,7 +59,7 @@
          	listLichKham.add(temp);
          }
          %>
-      <%@include file="Header.jsp"%>
+      <jsp:include page="header1.jsp"></jsp:include>
       <div class="container">
       <div class="row">
          <div class="contentright col-md-2">
@@ -254,7 +255,7 @@
          </div>
       </div>
       <!-- footer -->
-      <%@include file="Footer.jsp"%>
+      <jsp:include page="footer1.jsp"></jsp:include> 
       <script src="js/bootstrap.min.js"></script>
    </body>
 </html>
