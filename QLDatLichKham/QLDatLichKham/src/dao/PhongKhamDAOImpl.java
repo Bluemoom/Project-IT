@@ -37,7 +37,7 @@ public class PhongKhamDAOImpl implements PhongKhamDAO {
 	}
 
 	@Override
-	public List<PhongKham> findPhongKhamByLichBieu(Date ngayKham, int buoiKham, Long bacSiId) {
+	public List<PhongKham> findPhongKhamByLichBieu(Date ngayKham, int buoiKham, int bacSiId) {
 		List<PhongKham> results = null;
 		try {
 			session.getTransaction().begin();
