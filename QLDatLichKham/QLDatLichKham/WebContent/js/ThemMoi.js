@@ -83,8 +83,8 @@ app.controller('customersCtrl',function($scope, $http,$timeout) {
    		});
    	}
 
-   	$scope.bacSiId = null;
-   	$scope.phongKhamId = null;
+   	// $scope.bacSiId = null;
+   	// $scope.phongKhamId = null;
    }
 
    // Load bác sĩ khám tương ứng với phòng khám khi bệnh nhân chọn phòng khám
