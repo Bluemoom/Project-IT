@@ -121,15 +121,15 @@
 													<label class="col-sm-4 control-label">Chi Phí</label>
 													<div class="col-sm-4">
 														<input type="text" placeholder="Chi phí..."
-															class='form-control' value=<%=lk.getChiPhi()%> /> <input
+															class='form-control' value=<%=lk.getChiPhi()%> disabled /> <input
 															type="hidden" name="phieudatlich_id" class="form-control"
-															name="chiPhi" value=<%=lk.getChiPhi()%>>
+															value=<%=lk.getChiPhi()%>>
 													</div>
 												</div>
 												<div class="row">
 													<label class="col-sm-4 control-label">Phí hàng đợi</label>
 													<div class="col-sm-4">
-														<input type="text" placeholder="Chi phí..."
+														<input type="text" placeholder="Chi phí..." name="phiHangDoi"
 															class='form-control' value=<%=lk.getPhiDatLich()%> />
 
 													</div>

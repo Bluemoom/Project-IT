@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import com.google.gson.Gson;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +28,8 @@ public class BacSiRest extends HttpServlet {
 			throws ServletException, IOException {
 
 		List<BacSi> results = null;
+		request.setCharacterEncoding("urf-8");
+		response.setCharacterEncoding("urf-8");
 		String command = request.getParameter("command");
 		String ngayKham = request.getParameter("ngayKham");
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -46,6 +49,21 @@ public class BacSiRest extends HttpServlet {
 			String phongKhamId = request.getParameter("phongKhamId");
 			results = bacSiDAOImpl.findBacSiByLichBieu(ngayKhamConveter, buoiKham, phongKhamId);
 			break;
+		case "dangnhap":
+			String url = "DangNhap.jsp";
+			String username = request.getParameter("userName");
+			String password = request.getParameter("passWord");
+			BacSi bs = new BacSi();
+			bs = bacSiDAOImpl.checkLogin(username, password);
+			if (bs != null) {
+				url = "";
+			}
+			else {
+				String err_dangnhap2 = "UserName hoac password khong dung!";
+				request.setAttribute("err_dangnhap2", err_dangnhap2);
+			}
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request, response);
 		}
 
 		response.setContentType("application/json");

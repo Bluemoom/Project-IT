@@ -20,7 +20,7 @@ public interface PhieuDatLichDAO {
 	
 	PhieuDatLich findPhieuDatLichById(int phieuDatLichId);
 	
-	void updatePhieuDatLich(int phieuDatLich_Id, float phiDatLich, int hinhThucThanhToan);
+	void updatePhieuDatLich(float phieuDatLich_Id, float phiDatLich, int hinhThucThanhToan);
 	
 	List<PhieuDatLich> showListPhieuDatLich();
 

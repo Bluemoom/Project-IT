@@ -133,8 +133,7 @@ public class PhieuDatLichDAOIpml implements PhieuDatLichDAO {
 		return results;
 	}
 
-	@Override
-	public void updatePhieuDatLich(int phieuDatLich_Id, float phiDatLich, int hinhThucThanhToan) {
+	public void updatePhieuDatLich(float phieuDatLich_Id, float phiDatLich, int hinhThucThanhToan) {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
@@ -171,4 +170,5 @@ public class PhieuDatLichDAOIpml implements PhieuDatLichDAO {
 		} 
 		return results;
 	}
+
 }

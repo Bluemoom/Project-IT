@@ -6,6 +6,7 @@ import java.util.List;
 
 
 import model.BacSi;
+import model.ThuNgan;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -130,4 +131,21 @@ public class BacSiDAOImpl implements BacSiDAO {
 		return results;
 	}
 
+	@Override
+	public BacSi checkLogin(String username, String password) {
+		BacSi results = null;
+		try {
+			session1.getTransaction().begin();
+			String hql = "SELECT bs FROM BacSi bs WHERE bs.username = :username and bs.password = :password";
+			Query query = session1.createQuery(hql);
+			query.setParameter("username",username);
+			query.setParameter("password",password);
+			results = (BacSi) query.list().get(0);
+			session1.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session1.getTransaction().rollback();
+		}
+		return results;
+	}
 }

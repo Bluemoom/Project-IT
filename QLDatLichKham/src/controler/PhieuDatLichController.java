@@ -25,7 +25,7 @@ public class PhieuDatLichController extends HttpServlet {
 		if (command.equalsIgnoreCase("capnhat")){
 			String phieudatlich_id = request.getParameter("phieudatlich_id");
 			String phiHangDoi = request.getParameter("phiHangDoi");			
-			pla.updatePhieuDatLich(Integer.parseInt(phieudatlich_id), Integer.parseInt(phiHangDoi), 1);
+			pla.updatePhieuDatLich(Float.parseFloat(phieudatlich_id), Float.parseFloat(phiHangDoi), 1);
 			RequestDispatcher rd = request.getRequestDispatcher("ThuNgan.jsp");
 			rd.forward(request, response);
 		}

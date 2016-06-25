@@ -35,6 +35,7 @@ public class test1 {
 		BenhNhanDAO bna = new BenhNhanDAOImpl();
 		ThuNganDAOImpl tna = new ThuNganDAOImpl();
 		PhieuDatLichDAOIpml pla = new PhieuDatLichDAOIpml();
+		BacSiDAOImpl bsa = new BacSiDAOImpl();
 		
 		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		String ngayLam = "01-06-2016";
@@ -49,7 +50,7 @@ public class test1 {
 //		{
 //			System.out.println(bs.getHoTen());
 //		}	
-		System.out.print(tna.checkLogin("vandat", "123456").getUserName());
+		System.out.print(bsa.checkLogin("datnguyen", "123456").getUsername());
 		
 //		SentMail.send("smtp.gmail.com", "phamhongthuan@rocketmail.com", "phamthuannsth@gmail.com", "thuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");
 //		SentMail.send("smtp.gmail.com", "phamthuannsth@gmail.com", "tq1417@gmail.com", "quyenthuan1714", "Ma dat lich", "Ma dat lich cua ban la: MDL10000001");

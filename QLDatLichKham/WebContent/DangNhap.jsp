@@ -33,6 +33,11 @@
  		{
 			err_dangnhap1 = (String) request.getAttribute("err_dangnhap1");
  		}
+ 		String err_dangnhap2 = "";
+ 		if (request.getAttribute("err_dangnhap2")!=null)
+ 		{
+			err_dangnhap2 = (String) request.getAttribute("err_dangnhap2");
+ 		}
 	%>
      <jsp:include page="header1.jsp"></jsp:include>
       <div class="container">
@@ -74,6 +79,35 @@
 							<form class="form-horizontal" action="ThuNganController" method="post">
 							 	<input id="command" type="hidden" name="command" value="dangnhap"/>
 								<p style="color: red"><%=err_dangnhap1%></p>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">UserName:</label>
+									<div class="col-sm-4">
+										<input type="text" placeholder="UserName..." class='form-control' 
+										name="userName" required=""/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">PassWord:</label>
+									<div class="col-sm-4">
+										<input type="text" placeholder="PassWord..." class='form-control' 
+										name="passWord" required=""/>
+									</div>
+								</div>								
+								<div class="form-group">
+									<label class="col-sm-3 control-label"></label>
+									<div class="col-sm-4">	
+										<button type="submit" class="btn btn-success">Đăng nhập</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						
+						<button class="btn btn-primary" type="button" name="button" id="button" style="margin-top: 60px ;width: 200px; height: 40px">
+						Đăng nhập dành cho bác sĩ</button>
+						<div class="datlich">
+							<form class="form-horizontal" action="BacSiRest" method="post">
+							 	<input id="command" type="hidden" name="command" value="dangnhap"/>
+								<p style="color: red"><%=err_dangnhap2%></p>
 								<div class="form-group">
 									<label class="col-sm-3 control-label">UserName:</label>
 									<div class="col-sm-4">
